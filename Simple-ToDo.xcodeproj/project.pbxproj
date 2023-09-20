@@ -18,6 +18,7 @@
 		B7B196C02AB9ADB40009998C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B7B196BF2AB9ADB40009998C /* FirebaseDatabase */; };
 		B7B196C22AB9ADB40009998C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B7B196C12AB9ADB40009998C /* FirebaseFirestore */; };
 		B7B196C42AB9ADB40009998C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B7B196C32AB9ADB40009998C /* FirebaseMessaging */; };
+		B7B196C62ABA2DCC0009998C /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196C52ABA2DCC0009998C /* TodoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B7B196B22AB9ABFC0009998C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7B196B42AB9ABFC0009998C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7B196BA2AB9AC890009998C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B7B196C52ABA2DCC0009998C /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				B7B196AF2AB9ABFC0009998C /* Assets.xcassets */,
 				B7B196B12AB9ABFC0009998C /* LaunchScreen.storyboard */,
 				B7B196B42AB9ABFC0009998C /* Info.plist */,
+				B7B196C52ABA2DCC0009998C /* TodoTableViewCell.swift */,
 			);
 			path = "Simple-ToDo";
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				B7B196AB2AB9ABFA0009998C /* ViewController.swift in Sources */,
 				B7B196A72AB9ABFA0009998C /* AppDelegate.swift in Sources */,
 				B7B196A92AB9ABFA0009998C /* SceneDelegate.swift in Sources */,
+				B7B196C62ABA2DCC0009998C /* TodoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
