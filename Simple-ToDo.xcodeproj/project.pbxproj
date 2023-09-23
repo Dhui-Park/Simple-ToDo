@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B717AD032ABEA2B700497AAC /* OpenChatVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B717AD022ABEA2B700497AAC /* OpenChatVC.storyboard */; };
+		B717AD052ABEA2CD00497AAC /* OpenChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717AD042ABEA2CD00497AAC /* OpenChatVC.swift */; };
+		B717AD082ABEA73A00497AAC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717AD072ABEA73A00497AAC /* MessageCell.swift */; };
+		B717AD0A2ABEA74E00497AAC /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B717AD092ABEA74E00497AAC /* MessageCell.xib */; };
 		B7B196A72AB9ABFA0009998C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196A62AB9ABFA0009998C /* AppDelegate.swift */; };
 		B7B196A92AB9ABFA0009998C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196A82AB9ABFA0009998C /* SceneDelegate.swift */; };
 		B7B196AB2AB9ABFA0009998C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196AA2AB9ABFA0009998C /* ViewController.swift */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B717AD022ABEA2B700497AAC /* OpenChatVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenChatVC.storyboard; sourceTree = "<group>"; };
+		B717AD042ABEA2CD00497AAC /* OpenChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChatVC.swift; sourceTree = "<group>"; };
+		B717AD072ABEA73A00497AAC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		B717AD092ABEA74E00497AAC /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		B7B196A32AB9ABFA0009998C /* Simple-ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple-ToDo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B196A62AB9ABFA0009998C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7B196A82AB9ABFA0009998C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B717AD012ABEA29000497AAC /* OpenChat */ = {
+			isa = PBXGroup;
+			children = (
+				B717AD062ABEA70E00497AAC /* Cell */,
+				B717AD022ABEA2B700497AAC /* OpenChatVC.storyboard */,
+				B717AD042ABEA2CD00497AAC /* OpenChatVC.swift */,
+			);
+			path = OpenChat;
+			sourceTree = "<group>";
+		};
+		B717AD062ABEA70E00497AAC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B717AD072ABEA73A00497AAC /* MessageCell.swift */,
+				B717AD092ABEA74E00497AAC /* MessageCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B7B1969A2AB9ABFA0009998C = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +95,7 @@
 		B7B196A52AB9ABFA0009998C /* Simple-ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				B717AD012ABEA29000497AAC /* OpenChat */,
 				B7B196BA2AB9AC890009998C /* GoogleService-Info.plist */,
 				B7B196A62AB9ABFA0009998C /* AppDelegate.swift */,
 				B7B196A82AB9ABFA0009998C /* SceneDelegate.swift */,
@@ -149,8 +177,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7B196B32AB9ABFC0009998C /* LaunchScreen.storyboard in Resources */,
+				B717AD0A2ABEA74E00497AAC /* MessageCell.xib in Resources */,
 				B7B196BB2AB9AC890009998C /* GoogleService-Info.plist in Resources */,
 				B7B196B02AB9ABFC0009998C /* Assets.xcassets in Resources */,
+				B717AD032ABEA2B700497AAC /* OpenChatVC.storyboard in Resources */,
 				B7B196AE2AB9ABFA0009998C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,8 +194,10 @@
 			files = (
 				B7B196AB2AB9ABFA0009998C /* ViewController.swift in Sources */,
 				B7B196A72AB9ABFA0009998C /* AppDelegate.swift in Sources */,
+				B717AD052ABEA2CD00497AAC /* OpenChatVC.swift in Sources */,
 				B7B196A92AB9ABFA0009998C /* SceneDelegate.swift in Sources */,
 				B7B196C62ABA2DCC0009998C /* TodoTableViewCell.swift in Sources */,
+				B717AD082ABEA73A00497AAC /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
