@@ -235,19 +235,14 @@ extension ViewController: UITableViewDataSource {
         }
         
         let cellData: TodoEntity = todoList[indexPath.row]
-        cell.todoLabel.text = cellData.todo
-        cell.isDoneSwitch.isOn = cellData.isDone
         
-        cell.indexPath = indexPath
-        
-        cell.isDoneAction = { [weak self] indexPath, isDone in
+        cell.configureCell(cellData)
+        cell.isDoneAction = { [weak self] refId, isDone in
             
             guard let self = self else { return }
-            print(#fileID, #function, #line, "- indexPath: \(indexPath), isDone: \(isDone)")
+            print(#fileID, #function, #line, "- refId: \(refId), isDone: \(isDone)")
             
-            let isDoneCheckingTodo = self.todoList[indexPath.row]
-            
-            self.ref?.child(isDoneCheckingTodo.refId)
+            self.ref?.child(refId)
                 .updateChildValues(["isDone": isDone], withCompletionBlock: {_,_ in })
             // 1. 데이터 바꾸기
 //            self?.todoList[indexPath.row].isDone = isDone
@@ -255,7 +250,6 @@ extension ViewController: UITableViewDataSource {
 //            tableView.reloadRows(at: [indexPath], with: .fade)
         }
         
-        cell.selectionStyle = .none
         
         return cell
     }
