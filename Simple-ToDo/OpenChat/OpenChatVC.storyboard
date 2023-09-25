@@ -23,46 +23,6 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nkn-0s-D8V">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="606"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoTableViewCell" rowHeight="90" id="F9y-5A-96S" customClass="TodoTableViewCell" customModule="Simple_ToDo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="393" height="90"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9y-5A-96S" id="c6a-Vq-tVb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SWg-vD-w7X">
-                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNF-fW-qZu">
-                                                                    <rect key="frame" x="8" y="35" width="320" height="20.333333333333329"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PZ-DX-8BV">
-                                                                    <rect key="frame" x="338" y="29.666666666666671" width="49" height="31"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="47" id="lY2-QP-eio"/>
-                                                                    </constraints>
-                                                                </switch>
-                                                            </subviews>
-                                                            <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="SWg-vD-w7X" firstAttribute="top" secondItem="c6a-Vq-tVb" secondAttribute="top" id="7cJ-5h-YIo"/>
-                                                        <constraint firstAttribute="bottom" secondItem="SWg-vD-w7X" secondAttribute="bottom" id="Fns-nt-sdN"/>
-                                                        <constraint firstAttribute="trailing" secondItem="SWg-vD-w7X" secondAttribute="trailing" id="qV4-25-E8m"/>
-                                                        <constraint firstItem="SWg-vD-w7X" firstAttribute="leading" secondItem="c6a-Vq-tVb" secondAttribute="leading" id="ucY-yw-gt3"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="isDoneSwitch" destination="9PZ-DX-8BV" id="rEM-qF-toG"/>
-                                                    <outlet property="todoLabel" destination="VNF-fW-qZu" id="BFf-7g-Amm"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Vo-zg-zpC">
                                         <rect key="frame" x="0.0" y="616" width="393" height="50"/>
@@ -95,6 +55,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="1Cu-Qj-9VP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="inputTextField" destination="TpZ-uT-wcv" id="0TL-rq-LhN"/>
+                        <outlet property="messageTableView" destination="Nkn-0s-D8V" id="jVm-Wk-wjL"/>
+                        <outlet property="sendBtn" destination="jpY-Pg-YkZ" id="RqC-EN-T2A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
