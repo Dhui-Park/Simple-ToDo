@@ -30,6 +30,8 @@ class OpenChatVC: UIViewController {
     
     var userId: String? = nil
     
+    var isScrollingReachedToBottom: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,18 +67,26 @@ class OpenChatVC: UIViewController {
         
         // Listen for new comments in the Firebase database
         // 데이터 추가가 일어났을 때만 받겠다
-        ref?.observe(.childAdded, with: { (snapshot) -> Void in
-            
-            let addedMessageEntity = MessageEntity(snapshot)
-            print(#fileID, #function, #line, "- addedMessageEntity: \(addedMessageEntity)")
-            
-            // 1. 데이터 추가
-            self.messageList.append(addedMessageEntity)
-            
-            let appendingIndexPath = IndexPath(row: self.messageList.count - 1, section: 0)
-            
-            self.messageTableView.insertRows(at: [appendingIndexPath], with: .fade)
-        })
+        ref?
+            .queryLimited(toLast: 5)
+            .observe(.childAdded, with: { (snapshot) -> Void in
+                
+                let addedMessageEntity = MessageEntity(snapshot)
+                print(#fileID, #function, #line, "- addedMessageEntity: \(addedMessageEntity)")
+                
+                // 1. 데이터 추가
+                self.messageList.append(addedMessageEntity)
+                
+                let appendingIndexPath = IndexPath(row: self.messageList.count - 1, section: 0)
+                
+                self.messageTableView.insertRows(at: [appendingIndexPath], with: .fade)
+                
+                if self.isScrollingReachedToBottom {
+                    self.messageTableView.scrollToRow(at: appendingIndexPath, at: .bottom, animated: true)
+                    
+                }
+                
+            })
         
         // 특정 데이터가 변경되었을 때만 받겠다
         ref?.observe(.childChanged, with: { (snapshot) -> Void in
@@ -194,7 +204,7 @@ extension OpenChatVC: UITableViewDataSource {
     }
 }
 
-extension OpenChatVC: UITableViewDelegate {
+extension OpenChatVC: UITableViewDelegate, UIScrollViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "삭제", handler: { _,_,_  in
@@ -234,4 +244,20 @@ extension OpenChatVC: UITableViewDelegate {
         
         return cellConfig
     }
+   
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYOffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+
+        if distanceFromBottom < height + 100 {
+            print("You reached end of the table")
+            isScrollingReachedToBottom = true
+        } else {
+            isScrollingReachedToBottom = false
+        }
+    }
+    
+    
 }
