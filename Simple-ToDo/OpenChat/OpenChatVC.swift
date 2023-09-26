@@ -22,10 +22,20 @@ class OpenChatVC: UIViewController {
     
     @IBOutlet weak var sendBtn: UIButton!
     
+    var userNickname: String? = nil {
+        didSet {
+            self.navigationItem.title = "닉네임: " + (userNickname ?? "Why Not?")
+        }
+    }
+    
+    var userId: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.userNickname = UserDefaults.standard.string(forKey: "userNickname")
+        self.userId = UserDefaults.standard.string(forKey: "userId")
+        
         ref = Database
             .database(url: "https://simple-todo-3b7ec-default-rtdb.asia-southeast1.firebasedatabase.app")
             .reference().child("open-chat")
@@ -33,6 +43,7 @@ class OpenChatVC: UIViewController {
         self.messageTableView.dataSource = self
         self.messageTableView.delegate = self
         
+        self.messageTableView.separatorStyle = .none
         
         self.messageTableView.register(MessageCell.uinib, forCellReuseIdentifier: MessageCell.reuseIdentifier)
         
@@ -96,12 +107,29 @@ class OpenChatVC: UIViewController {
             return
         }
         
+        guard let userNickname = self.userNickname else {
+            presentNicknameSettingAlert()
+            return
+        }
+        
+        var currentUserId = ""
+        
+        if let userId = self.userId {
+            currentUserId = userId
+        } else {
+            let currentTime = Date().makeDateString()
+            let senderId = userNickname + currentTime
+            UserDefaults.standard.setValue(senderId, forKey: "userId")
+            currentUserId = senderId
+        }
+        
+        
         // 데이터 추가되는 부분 -> 그런 다음은? viewDidLoad()에 수신하는 놈을 하나 만들자.
         self.ref?
             .childByAutoId()
             .setValue([
-                "senderId": "senderId",
-                "senderNickname": "senderNickname",
+                "senderId": currentUserId,
+                "senderNickname": userNickname,
                 "message": userInput,
                 "createdAt": Date().makeDateString()
             ] as [String : Any])
@@ -110,40 +138,41 @@ class OpenChatVC: UIViewController {
         self.inputTextField.text = ""
     }
     
-//    fileprivate func presentEditTodoAlert(currentTodo: TodoEntity, indexPath: IndexPath) {
-//        
-//        let alert = UIAlertController(title: "수정",
-//                                      message: "할일을 수정해주세요.",
-//                                      preferredStyle: .alert)
-//        
-//        alert.addTextField()
-//        
-//        let inputTF = alert.textFields?.first
-//        inputTF?.text = currentTodo.todo
-//        
-//        let editAction = UIAlertAction(title: NSLocalizedString("수정 완료", comment: "Default action"),
-//                                   style: .default,
-//                                   handler: { [weak self] _ in
-//            guard let self = self,
-//                  let userInput = inputTF?.text else { return }
-//            
-//            let editingTodo = self.messageList[indexPath.row]
-//            
-//            self.ref?.child(editingTodo.refId)
-//                .updateChildValues(["todo": userInput], withCompletionBlock: {_,_ in })
-//            
-////            self.todoList[indexPath.row].todo = userInput
-////            self.todoTableView.reloadRows(at: [indexPath], with: .fade)
-//        })
-//        let cancelAction = UIAlertAction(title: NSLocalizedString("닫기", comment: "Default action"),
-//                                         style: .cancel,
-//                                         handler: {  _ in
-//        })
-//        alert.addAction(editAction)
-//        alert.addAction(cancelAction)
-//        self.present(alert, animated: true, completion: nil)
-//        
-//    }
+    fileprivate func presentNicknameSettingAlert() {
+        
+        let alert = UIAlertController(title: "안내",
+                                      message: "닉네임을 입력해주세요",
+                                      preferredStyle: .alert)
+        
+        alert.addTextField()
+        
+        let inputTF = alert.textFields?.first
+        inputTF?.placeholder = "초빡코더"
+        
+        let editAction = UIAlertAction(title: NSLocalizedString("완료", comment: "Default action"),
+                                   style: .default,
+                                   handler: { [weak self] _ in
+            guard let self = self,
+                  let userInput = inputTF?.text else { return }
+            
+            let trimmedUserInput = userInput.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if trimmedUserInput.count > 0 {
+                self.userNickname = userInput
+                UserDefaults.standard.setValue(userInput, forKey: "userNickname")
+            }
+            
+            
+        })
+        let cancelAction = UIAlertAction(title: NSLocalizedString("닫기", comment: "Default action"),
+                                         style: .cancel,
+                                         handler: {  _ in
+        })
+        alert.addAction(editAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
 }
 

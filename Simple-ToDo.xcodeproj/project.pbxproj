@@ -13,6 +13,7 @@
 		B717AD0A2ABEA74E00497AAC /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B717AD092ABEA74E00497AAC /* MessageCell.xib */; };
 		B717AD0D2ABEADAF00497AAC /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717AD0C2ABEADAF00497AAC /* MessageEntity.swift */; };
 		B717AD102AC1898B00497AAC /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717AD0F2AC1898B00497AAC /* Date+String.swift */; };
+		B717AD132AC289E500497AAC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B717AD122AC289E500497AAC /* SDWebImage */; };
 		B7B196A72AB9ABFA0009998C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196A62AB9ABFA0009998C /* AppDelegate.swift */; };
 		B7B196A92AB9ABFA0009998C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196A82AB9ABFA0009998C /* SceneDelegate.swift */; };
 		B7B196AB2AB9ABFA0009998C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B196AA2AB9ABFA0009998C /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 				B7B196C02AB9ADB40009998C /* FirebaseDatabase in Frameworks */,
 				B7B196BE2AB9ADB40009998C /* FirebaseAuth in Frameworks */,
 				B7B196C22AB9ADB40009998C /* FirebaseFirestore in Frameworks */,
+				B717AD132AC289E500497AAC /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,7 @@
 				B7B196BF2AB9ADB40009998C /* FirebaseDatabase */,
 				B7B196C12AB9ADB40009998C /* FirebaseFirestore */,
 				B7B196C32AB9ADB40009998C /* FirebaseMessaging */,
+				B717AD122AC289E500497AAC /* SDWebImage */,
 			);
 			productName = "Simple-ToDo";
 			productReference = B7B196A32AB9ABFA0009998C /* Simple-ToDo.app */;
@@ -183,6 +186,7 @@
 			mainGroup = B7B1969A2AB9ABFA0009998C;
 			packageReferences = (
 				B7B196BC2AB9ADB30009998C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B717AD112AC289E500497AAC /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = B7B196A42AB9ABFA0009998C /* Products */;
 			projectDirPath = "";
@@ -441,6 +445,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B717AD112AC289E500497AAC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.2;
+			};
+		};
 		B7B196BC2AB9ADB30009998C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -452,6 +464,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B717AD122AC289E500497AAC /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B717AD112AC289E500497AAC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		B7B196BD2AB9ADB40009998C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B7B196BC2AB9ADB30009998C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

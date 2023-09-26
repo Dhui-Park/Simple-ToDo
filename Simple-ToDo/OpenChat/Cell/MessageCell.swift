@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 protocol Nibbed {
     static var uinib: UINib { get }
@@ -46,6 +48,10 @@ class MessageCell: UITableViewCell {
         self.selectionStyle = .none
         self.messageBubbleBgView.backgroundColor = .systemYellow.withAlphaComponent(0.2)
         self.messageBubbleBgView.layer.cornerRadius = 8
+        
+        self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.bounds.width/2
+        self.userProfileImageView.sd_imageTransition = .fade
+        self.userProfileImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,6 +66,8 @@ class MessageCell: UITableViewCell {
         messageLabel.text = cellData.message
         userNicknameLabel.text = cellData.senderNickname
         timestampLabel.text = cellData.createdAt
+        userProfileImageView.sd_setImage(with: cellData.userProfileUrl)
+
     }
 
 }
